@@ -16,7 +16,7 @@ const accounts = [
 
 exports.accounts = accounts
 
-exports.seed = function (knex, Promise) {
+exports.seed = function (knex, Promise) { // eslint-disable-line
   return knex('accounts').truncate()
     .then(function () {
       return knex('accounts').insert(accounts);

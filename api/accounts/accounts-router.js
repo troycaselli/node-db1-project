@@ -16,12 +16,7 @@ router.get('/', async (req, res, next) => {
 })
 
 router.get('/:id', checkAccountId, async (req, res, next) => {
-  try {
-    const account = await Accounts.getById(req.params.id);
-    res.status(200).json(account);
-  } catch(err) {
-    next(err);
-  }
+  res.status(200).json(req.account);
 })
 
 router.post(
@@ -55,8 +50,8 @@ router.put(
 
 router.delete('/:id', checkAccountId, async (req, res, next) => {
   try {
-    const deletedAccount = await Accounts.deleteById(req.params.id);
-    res.status(200).json(deletedAccount);
+    await Accounts.deleteById(req.params.id);
+    res.status(200).json(req.account);
   } catch(err) {
     next(err);
   }
